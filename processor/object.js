@@ -28,7 +28,9 @@ function resolveInclude(filePath, data) {
 
 const processors = {
   object: (filePath, value) => extend(value, resolveInclude(filePath, value)),
-  string: stringProcessor
+  string: stringProcessor,
+  number: (filePath, value) => value,
+  boolean: (filePath, value) => value
 };
 
 /**
@@ -46,7 +48,12 @@ function process(filePath, data) {
       return;
     }
 
-    node.update(processors[typeof value](filePath, value));
+    const processor = processors[typeof value];
+    if (!processor) {
+      throw new Error(`No processor available for ${typeof value}`);
+    }
+
+    node.update(processor(filePath, value));
   });
 
   validate(filePath, processedObject);
