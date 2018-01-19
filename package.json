@@ -1,0 +1,16 @@
+{
+  "name": "brightspot-json-loader",
+  "version": "0.0.1",
+  "author": "Ryan Anderson",
+  "description": "Loader module for Webpack supporting Brightspot JSON views.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/perfectsense/brightspot-json-loader"
+  },
+  "dependencies": {
+    "chance": "^1.0.13",
+    "jsonlint-mod": "^1.7.2",
+    "traverse": "^0.6.6"
+  }
+}
