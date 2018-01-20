@@ -11,7 +11,7 @@ function resolveInclude(filePath, data) {
   const includeValue = data[includeKey];
   delete data[includeKey];
   if (!includeValue) {
-    return {};
+    return data;
   }
 
   const includePath = path.join(path.dirname(filePath), includeValue);
@@ -27,7 +27,7 @@ function resolveInclude(filePath, data) {
 }
 
 const processors = {
-  object: (filePath, value) => extend(value, resolveInclude(filePath, value)),
+  object: (filePath, value) => extend(resolveInclude(filePath, value), value),
   string: stringProcessor,
   number: (filePath, value) => value,
   boolean: (filePath, value) => value
