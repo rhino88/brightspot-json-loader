@@ -1,0 +1,6 @@
+{
+  "_type": "foo",
+  "item": {
+    "_include": "./noop.json"
+  }
+}
