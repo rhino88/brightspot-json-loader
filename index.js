@@ -9,7 +9,7 @@ module.exports = function(source) {
   const loader = this;
   let value = typeof source === "string" ? JSON.parse(source) : source;
   const filePath = loader.resourcePath;
-  processor(filePath, value);
+  value = processor(filePath, value);
 
   value = JSON.stringify(value)
     .replace(/\u2028/g, "\\u2028")
