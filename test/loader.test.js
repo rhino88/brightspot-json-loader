@@ -4,7 +4,7 @@ function compare(actual, expected) {
   expect(actual).toBe(`module.exports = ${expected}`);
 }
 
-describe("Success", () => {
+describe("Valid", () => {
   test("Noop", async () => {
     const stats = await compiler("./example/noop.json");
     const output = stats.toJson().modules[0].source;
@@ -27,5 +27,20 @@ describe("Success", () => {
     const stats = await compiler("./example/array.json");
     const output = stats.toJson().modules[0].source;
     compare(output, `{"_type":"array","items":["foo","bar","baz"]}`);
+  });
+
+  test("Object Array", async () => {
+    const stats = await compiler("./example/objectArray.json");
+    const output = stats.toJson().modules[0].source;
+    compare(output, `{"_type":"array","items":[{"_type":"foo","foo":"bar"}]}`);
+  });
+});
+
+describe("Invalid", () => {
+  test("Missing _type", async () => {
+    const stats = await compiler("./example/missingType.json");
+    const output = stats.toJson().modules[0].source;
+    console.log(output);
+    expect(output).toEqual(expect.stringContaining("throw new Error"));
   });
 });

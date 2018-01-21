@@ -1,0 +1,8 @@
+{
+  "_type": "array",
+  "items": [
+    {
+      "_include": "noop.json"
+    }
+  ]
+}
