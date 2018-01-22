@@ -23,8 +23,7 @@ function resolveInclude(filePath, data) {
   validate(includePath, includeData);
   delete includeData[includeKey];
 
-  return includeData;
-  // return process(includePath, includeData);
+  return process(includePath, includeData);
 }
 
 const processors = {

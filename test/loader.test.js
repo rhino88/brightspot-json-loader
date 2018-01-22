@@ -40,7 +40,6 @@ describe("Invalid", () => {
   test("Missing _type", async () => {
     const stats = await compiler("./example/missingType.json");
     const output = stats.toJson().modules[0].source;
-    console.log(output);
     expect(output).toEqual(expect.stringContaining("throw new Error"));
   });
 });
