@@ -1,6 +1,6 @@
 {
   "name": "brightspot-json-loader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Ryan Anderson",
   "description": "Loader module for Webpack supporting Brightspot JSON views.",
   "license": "MIT",
